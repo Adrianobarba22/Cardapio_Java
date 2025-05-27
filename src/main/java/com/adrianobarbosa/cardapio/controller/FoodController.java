@@ -1,15 +1,13 @@
 package com.adrianobarbosa.cardapio.controller;
 
+import com.adrianobarbosa.cardapio.dto.FoodRequestDTO;
+import com.adrianobarbosa.cardapio.dto.FoodResponseDTO;
 import com.adrianobarbosa.cardapio.food.Food;
-import com.adrianobarbosa.cardapio.food.FoodRepository;
-import com.adrianobarbosa.cardapio.food.FoodRequestDTO;
-import com.adrianobarbosa.cardapio.food.FoodResponseDTO;
+import com.adrianobarbosa.cardapio.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
-
 
 @RestController
 @RequestMapping("food")
