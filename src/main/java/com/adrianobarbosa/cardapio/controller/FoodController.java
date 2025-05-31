@@ -31,4 +31,24 @@ public class FoodController {
         List<FoodResponseDTO> foodList = repository.findAll().stream().map(FoodResponseDTO::new).toList();
         return foodList;
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/{id}")
+    public void updateFood(@PathVariable Long id, @RequestBody FoodRequestDTO data){
+        Food existingFood = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Food not found"));
+
+        existingFood.updateFromDTO(data);
+
+        repository.save(existingFood);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @DeleteMapping("/{id}")
+    public void deleteFood(@PathVariable Long id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Food not found");
+        }
+        repository.deleteById(id);
+    }
 }
